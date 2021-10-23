@@ -6,6 +6,7 @@ import store from "./store/store";
 import AppRoute from "./routes/AppRoute";
 
 const App = () => {
+
   return (
     <Provider store={store}>
         <BrowserRouter>

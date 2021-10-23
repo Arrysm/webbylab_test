@@ -1,0 +1,10 @@
+.gallery__options .input-field {
+    width: 40%;
+}
+
+.gallery__options {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
