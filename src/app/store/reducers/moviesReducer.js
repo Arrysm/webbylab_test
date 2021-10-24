@@ -1,17 +1,27 @@
-import initialStore from "../initialStore";
-import {ADD_MOVIE, DELETE_MOVIE, GET_ALL_MOVIES, GET_MOVIE} from "../actions/moviesActions";
+import {
+    GET_ALL_MOVIES,
+    ADD_MOVIE,
+    DELETE_MOVIE,
+    UPLOAD_MOVIES,
+    GET_SEARCHED_MOVIES,
+    GET_SORTED_MOVIES
+} from "../actions/moviesActions";
 
-export const moviesReducer = (store = initialStore, action) => {
+export const moviesReducer = (movies=[], action) => {
     switch (action.type) {
         case GET_ALL_MOVIES:
             return action.payload;
-        case GET_MOVIE:
+        case GET_SORTED_MOVIES:
+            return action.payload;
+        case GET_SEARCHED_MOVIES:
             return action.payload;
         case ADD_MOVIE:
             return action.payload;
         case DELETE_MOVIE:
             return action.payload;
+        case UPLOAD_MOVIES:
+            return action.payload;
         default:
-            return store;
+            return movies;
     }
 }

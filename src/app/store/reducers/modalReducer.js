@@ -1,11 +1,11 @@
 import initialStore from "../initialStore";
-import {END_LOADING, START_LOADING} from "../actions/loaderActions";
+import {CLOSE_MODAL, OPEN_MODAL} from "../actions/modalActions";
 
-export const loaderReducer = (store = initialStore, action) => {
+export const modalReducer = (store = initialStore, action) => {
     switch (action.type) {
-        case START_LOADING:
+        case OPEN_MODAL:
             return action.payload;
-        case END_LOADING:
+        case CLOSE_MODAL:
             return action.payload;
         default:
             return store;

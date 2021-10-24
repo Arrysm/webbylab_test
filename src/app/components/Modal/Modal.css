@@ -1,0 +1,27 @@
+.modal__wrapper {
+    z-index: 3;
+    perspective: 400px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(5px);
+}
+
+.modal__form {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal__form .input-field:last-child {
+    margin-top: 30px;
+}
