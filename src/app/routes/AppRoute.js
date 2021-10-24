@@ -6,15 +6,20 @@ import Registry from "../pages/Registry/Registry";
 import Login from "../pages/Login/Login";
 import {useEffect} from "react";
 import {setToken} from "../store/actions/tokenActions";
+import Loader from "../components/Loader/Loader";
 
 const AppRoute = () => {
     const dispatch = useDispatch();
     const token = useSelector(store => store.token);
+    const isLoading = useSelector(store => store.isLoading);
 
     useEffect(() => {
         const storageToken = sessionStorage.getItem('webbyUser') || 'DAS';
         dispatch(setToken(storageToken));
     }, [dispatch])
+
+    if (isLoading) return <Loader />
+
 
     return (
         <Switch>

@@ -1,12 +1,9 @@
-import {useSelector} from "react-redux";
-import Loader from "../../components/Loader/Loader";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import {Link} from "react-router-dom";
 import React, {useRef, useState} from "react";
 
 const Registry = () => {
-    const isLoading = useSelector(store => store.isLoading);
 
     const pass = useRef(null);
     const confirm = useRef(null);
@@ -26,8 +23,6 @@ const Registry = () => {
             value.confirm = '';
         }
     }
-
-    if (isLoading) return <Loader />
 
     return (
         <div className={'form__wrapper'}>

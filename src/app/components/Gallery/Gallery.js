@@ -47,7 +47,7 @@ const Gallery = () => {
                 <Input
                     id={'search'}
                     type={'text'}
-                    label={'Search by name or actor'}
+                    label={'Search by title or actor'}
                     innerRef={search}
                     onChange={handleSearch}
                 />
