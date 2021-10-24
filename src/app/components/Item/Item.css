@@ -1,0 +1,18 @@
+.item__text {
+    font-size: 12px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    user-select: none;
+}
+
+.item__title {
+    user-select: none;
+}
+
+.item {
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
