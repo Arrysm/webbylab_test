@@ -18,26 +18,27 @@ const Gallery = () => {
     const handleSearch = () => {
         let value = (search.current.value.trim()).toLowerCase();
         if (value === '') {
-            dispatch(getAllMovies());
+            dispatch(getAllMovies(token));
         } else {
-            dispatch(getSearchedMovies(value));
+            dispatch(getSearchedMovies(value, token));
         }
     }
 
     const handleSort = () => {
         if (sorted) {
-            dispatch(getAllMovies())
+            dispatch(getAllMovies(token))
             setSorted(!sorted);
             return
         }
-        dispatch(getSortedMovies());
+        dispatch(getSortedMovies(token));
         setSorted(!sorted);
     }
 
-    const items = movies.map(el => <Item key={el.id} {...el}/>)
+    const items = movies.map(el => <Item key={el.id} {...el}/>);
+    const token = useSelector(store => store.token);
 
     useEffect(() => {
-        dispatch(getAllMovies());
+        dispatch(getAllMovies(token));
     }, [dispatch])
 
     return (
@@ -53,6 +54,7 @@ const Gallery = () => {
                 <Button
                     text={sorted ? 'Shuffle' : 'Sort A-Z'}
                     onClick={handleSort}
+                    className={items.length < 2 && 'disabled'}
                 />
                 <div>
                     <Button
@@ -76,7 +78,7 @@ const Gallery = () => {
                     onChange={e => {
                         let data = new FormData();
                         data.append('movies', e.target.files[0], e.target.files[0].name);
-                        dispatch(uploadMovies(data, movies));
+                        dispatch(uploadMovies(data, movies, token));
                     }}
                 />
                 {items.length > 0 ?

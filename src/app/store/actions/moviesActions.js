@@ -7,10 +7,8 @@ export const ADD_MOVIE = 'ADD_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const UPLOAD_MOVIES = 'UPLOAD_MOVIES'
 
-const headers = {headers: {'Authorization': sessionStorage.getItem('webbyUser')}};
-
-export const getAllMovies = () => dispatch => {
-    axios.get('/movies', headers)
+export const getAllMovies = (token) => dispatch => {
+    axios.get('/movies', {headers: {'Authorization': token}})
         .then(resp => {
             const {status, data} = resp.data;
             if (status && data.length > 0) {
@@ -19,8 +17,9 @@ export const getAllMovies = () => dispatch => {
         })
 }
 
-export const getSortedMovies = () => dispatch => {
-    axios.get('/movies?sort=title&order=ASC&limit=20&offset=0', headers)
+export const getSortedMovies = (token) => dispatch => {
+    axios.get('/movies?sort=title&order=ASC&limit=20&offset=0',
+        {headers: {'Authorization': token}})
         .then(resp => {
             const {status, data} = resp.data;
             if (status && data.length > 0) {
@@ -29,8 +28,9 @@ export const getSortedMovies = () => dispatch => {
         })
 }
 
-export const getSearchedMovies = (data) => dispatch => {
-    axios.get(`/movies?search=${data}&sort=id&order=ASC&limit=20&offset=0`, headers)
+export const getSearchedMovies = (data, token) => dispatch => {
+    axios.get(`/movies?search=${data}&sort=id&order=ASC&limit=20&offset=0`,
+        {headers: {'Authorization': token}})
         .then(resp => {
             const {status, data} = resp.data;
             if (status && data.length > 0) {
@@ -39,7 +39,7 @@ export const getSearchedMovies = (data) => dispatch => {
         })
 }
 
-export const addMovie = (values, movies) => dispatch => {
+export const addMovie = (values, movies, token) => dispatch => {
     const {title, year, format, actors} = values;
     const data = {
         title,
@@ -48,7 +48,7 @@ export const addMovie = (values, movies) => dispatch => {
         actors: actors.replace(/(\r\n|\n|\r)/gm, ',').split(',')
     }
 
-    axios.post('/movies', data, headers)
+    axios.post('/movies', data, {headers: {'Authorization': token}})
         .then(resp => {
             const {data, status} = resp.data;
             if (status) {
@@ -59,8 +59,8 @@ export const addMovie = (values, movies) => dispatch => {
         })
 }
 
-export const deleteMovie = (id, movies) => dispatch => {
-    axios.delete(`/movies/${id}`, headers)
+export const deleteMovie = (id, movies, token) => dispatch => {
+    axios.delete(`/movies/${id}`, {headers: {'Authorization': token}})
         .then(resp => {
             const {status} = resp.data
             if (status) {
@@ -71,8 +71,8 @@ export const deleteMovie = (id, movies) => dispatch => {
         })
 }
 
-export const uploadMovies = (data, movies) => dispatch => {
-    axios.post('/movies/import', data, headers)
+export const uploadMovies = (data, movies, token) => dispatch => {
+    axios.post('/movies/import', data, {headers: {'Authorization': token}})
         .then(resp => {
             const {status, data} = resp.data;
             if (status) {

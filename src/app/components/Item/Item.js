@@ -7,6 +7,7 @@ import axios from "axios";
 
 const Item = (props) => {
     const movies = useSelector(store => store.movies);
+    const token = useSelector(store => store.token);
     const dispatch = useDispatch();
     const {title, year, format, id} = props;
 
@@ -38,7 +39,7 @@ const Item = (props) => {
                 <p className={'item__title'}>{title}</p>
                 <Button
                     text={'Delete'}
-                    onClick={() => dispatch(deleteMovie(id, movies))}
+                    onClick={() => dispatch(deleteMovie(id, movies, token))}
                 />
             </div>
             {text &&

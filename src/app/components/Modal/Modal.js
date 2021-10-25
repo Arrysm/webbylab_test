@@ -8,6 +8,7 @@ import {addMovie} from "../../store/actions/moviesActions";
 const Modal = (props) => {
     const {close} = props;
     const movies = useSelector(store => store.movies);
+    const token = useSelector(store => store.token);
 
     const dispatch = useDispatch();
 
@@ -25,7 +26,7 @@ const Modal = (props) => {
              className={'modal__wrapper'}>
             <form onSubmit={e => {
                 e.preventDefault();
-                dispatch(addMovie(value, movies));
+                dispatch(addMovie(value, movies, token));
                 close();
             }} className={'modal__form'}>
                 <Input
