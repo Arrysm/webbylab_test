@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Тестовое Задание для WebbyLab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание приложения
 
-## Available Scripts
+SPA созданное с помощью create-react-app, для хранения информации о фильмах.
 
-In the project directory, you can run:
+Ссылка на проект на [GitHub](https://github.com/Arrysm/webbylab_test.git).
 
-### `npm start`
+## Старт приложения
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `docker pull agonchar95/webbylab-test`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Получить образ React-приложения, упакованного в Docker образ.
 
-### `npm test`
+### `docker pull webbylabhub/movies`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Получить образ бекенда, упакованного в Docker образ.
 
-### `npm run build`
+### `docker-compose up`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Команда для запуска приложения, после того, как с GitHub возьмете [docker-compose.yml](https://github.com/Arrysm/webbylab_test.git)  
+После успешного старта, перейдите в браузере по ссылке: [http://localhost:3000/](http://localhost:3000/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Архитектура приложения
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Данное приложение было создано с помощью CRA(create-react-app).  
+Это SPA(single page application) для хранения, отображения и взаемодействия с фильмами.  
+Для хранения состояния приложения использались библиотеки redux, react-redux.  
+Для роутинка приложения - react-router-dom.  
+Для передачи действий в качестве функций - redux-thunk.
 
-### `npm run eject`
+## Как работает приложение
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+При старте приложения и перехода по ссылке выше, пользователь поадает на страницу логина.\
+На этой странице у юзера есть возможность залогиниться или перейти на страницу регистрации.  
+При необходимости, у пользователя есть возможность зарегестрироваться на соответствующей странице и, в случае успеха, его перенаправит на страницу входа с соответствующим уведомлением.\
+После успешного входа в приложения, пользователь видит галерею с фильмами. \
+Если на данный момент у пользователя фильмов нет, то будет соответственная надпись. \
+У пользователя есть возможнось: 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* добавлять фильмы(по одному или загрузить файл);  
+* удалять; 
+* сортирвоать по алфавиту;
+* искать по названию фильма или актерам; 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Каждое действие отправляет соответствующий запрос на бек.  
+  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
