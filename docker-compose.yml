@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  front:
+    container_name: front
+    image: agonchar95/webbylab-test
+    ports:
+      - "3000:3000"
+    networks:
+      - mynet
+
+  back:
+    container_name: back
+    image: webbylabhub/movies
+    ports:
+      - "8000:8000"
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      driver: default

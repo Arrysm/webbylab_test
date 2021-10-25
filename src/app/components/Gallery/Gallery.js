@@ -39,7 +39,7 @@ const Gallery = () => {
 
     useEffect(() => {
         dispatch(getAllMovies(token));
-    }, [dispatch])
+    }, [dispatch, token])
 
     return (
         <div className={'gallery__wrapper container'}>
