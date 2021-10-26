@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import './Item.css';
 import Button from "../Button/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {deleteMovie} from "../../store/actions/moviesActions";
+import {useDispatch} from "react-redux";
 import axios from "axios";
+import {openConfirmModal} from "../../store/actions/modalActions";
 
 const Item = (props) => {
-    const movies = useSelector(store => store.movies);
-    const token = useSelector(store => store.token);
     const dispatch = useDispatch();
     const {title, year, format, id} = props;
 
@@ -39,7 +37,7 @@ const Item = (props) => {
                 <p className={'item__title'}>{title}</p>
                 <Button
                     text={'Delete'}
-                    onClick={() => dispatch(deleteMovie(id, movies, token))}
+                    onClick={() => dispatch(openConfirmModal(title, id))}
                 />
             </div>
             {text &&

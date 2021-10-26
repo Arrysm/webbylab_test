@@ -5,7 +5,12 @@ import Button from "../Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import Item from "../Item/Item";
 import {openModal} from "../../store/actions/modalActions";
-import {getAllMovies, getSearchedMovies, getSortedMovies, uploadMovies} from "../../store/actions/moviesActions";
+import {
+    getAllMovies,
+    getSearchedMovies,
+    getSortedMovies, setSortedMovies,
+    uploadMovies
+} from "../../store/actions/moviesActions";
 
 const Gallery = () => {
     const search = useRef(null);
@@ -14,24 +19,37 @@ const Gallery = () => {
 
     const inputFile = useRef(null);
     const [sorted, setSorted] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     const handleSearch = () => {
         let value = (search.current.value.trim()).toLowerCase();
+        setSearchValue(value);
         if (value === '') {
             dispatch(getAllMovies(token));
         } else {
             dispatch(getSearchedMovies(value, token));
+            setSorted(false);
         }
     }
 
     const handleSort = () => {
         if (sorted) {
-            dispatch(getAllMovies(token))
-            setSorted(!sorted);
-            return
+            if (searchValue === '') {
+                dispatch(getAllMovies(token))
+                setSorted(!sorted);
+            } else {
+                dispatch(getSearchedMovies(searchValue, token));
+                setSorted(!sorted);
+            }
+        } else {
+            if (searchValue === '') {
+                dispatch(getSortedMovies(token));
+                setSorted(!sorted);
+            } else {
+                dispatch(setSortedMovies(movies));
+                setSorted(!sorted);
+            }
         }
-        dispatch(getSortedMovies(token));
-        setSorted(!sorted);
     }
 
     const items = movies.map(el => <Item key={el.id} {...el}/>);
@@ -78,7 +96,7 @@ const Gallery = () => {
                     onChange={e => {
                         let data = new FormData();
                         data.append('movies', e.target.files[0], e.target.files[0].name);
-                        dispatch(uploadMovies(data, movies, token));
+                        dispatch(uploadMovies(data, movies, token, e.target.files[0].name));
                     }}
                 />
                 {items.length > 0 ?

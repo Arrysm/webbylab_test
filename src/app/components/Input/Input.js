@@ -2,7 +2,7 @@ import React from 'react';
 import './Input.css'
 
 const Input = (props) => {
-    const {id, type, label, onChange, onBlur, innerRef, textArea} = props;
+    const {id, type, label, onChange, onBlur, innerRef, textArea, error, required} = props;
 
     if (textArea) {
         return (
@@ -14,6 +14,7 @@ const Input = (props) => {
                     onBlur={onBlur && onBlur}
                     ref={innerRef && innerRef}
                 />
+                {error && <p className={'input-error'}>{error}</p>}
                 <label htmlFor={id}>{label}</label>
             </div>
         )
@@ -27,8 +28,10 @@ const Input = (props) => {
                 onChange={onChange}
                 onBlur={onBlur && onBlur}
                 ref={innerRef && innerRef}
+                required={required && required}
             />
-                <label htmlFor={id}>{label}</label>
+            {error && <p className={'input-error'}>{error}</p>}
+            <label htmlFor={id}>{label}</label>
         </div>
     );
 };

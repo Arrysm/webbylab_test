@@ -1,6 +1,5 @@
 .modal__wrapper {
     z-index: 3;
-    perspective: 400px;
     position: fixed;
     left: 0;
     top: 0;
@@ -20,8 +19,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(255,255,255);
 }
 
 .modal__form .input-field:last-child {
     margin-top: 30px;
+}
+
+.confirm-content {
+    background: rgb(255,255,255);
+    border-radius: 5px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #dddddd;
+}
+
+.confirm-content p {
+    max-width: 90%;
+    margin: 10px;
+}
+
+.confirm-btn-wrapper {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
 }

@@ -4,7 +4,7 @@ import {
     DELETE_MOVIE,
     UPLOAD_MOVIES,
     GET_SEARCHED_MOVIES,
-    GET_SORTED_MOVIES
+    GET_SORTED_MOVIES, SET_SORTED_MOVIES
 } from "../actions/moviesActions";
 
 export const moviesReducer = (movies=[], action) => {
@@ -12,6 +12,8 @@ export const moviesReducer = (movies=[], action) => {
         case GET_ALL_MOVIES:
             return action.payload;
         case GET_SORTED_MOVIES:
+            return action.payload;
+        case SET_SORTED_MOVIES:
             return action.payload;
         case GET_SEARCHED_MOVIES:
             return action.payload;

@@ -1,0 +1,13 @@
+select {
+    display: block;
+}
+
+.select-label {
+    position: absolute !important;
+    top: -30px !important;
+    font-size: .8rem !important;
+}
+
+.select-wrapper {
+    width: 100%;
+}
